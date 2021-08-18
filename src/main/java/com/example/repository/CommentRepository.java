@@ -49,7 +49,7 @@ public class CommentRepository {
 	 */
 	public List<Comment> findByArticleId(int articleId){
 		
-		String sql = "SELECT id, name, content, article_id FROM comments WHERE article_id=:articleId ORDER BY id DESC ;";
+		String sql = "SELECT id, name, content, article_id FROM comments WHERE article_id=:articleId ORDER BY id ASC ;";
 		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("articleId", articleId);
 		

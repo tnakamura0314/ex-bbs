@@ -27,7 +27,31 @@
         投稿内容:<br>
         <span th:text="${article.content}" th:field="content">dummy</span><br>
         <button>記事削除</button>
+        
+        <span th:each="comment : ${article.commentList}">
+          コメント者名:<span th:text="${comment.name}" th:field="name">dummy</span><br>
+          コメント内容:<br>
+        <span th:text="${comment.content}" th:field="content">dummy</span><br>
+        </span>
+        
+        <form th:action="@{/Article/insertArticle}" method="post">
+		<label for="name"> 
+		  名前:<br>
+		  <input type="text" name="name" id="id">
+		</label><br>
+		
+		 <label for="content"> 
+		 投稿内容:<br>
+		 <textarea name="content" id="content" rows="4" cols="30"></textarea>
+		</label><br>
+		<button>コメント投稿</button>
+	</form>
+        
+        <hr>
       </div>
+      
+     
+      
     </form>
 </body>
 </html>

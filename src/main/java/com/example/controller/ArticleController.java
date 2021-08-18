@@ -52,13 +52,14 @@ public class ArticleController {
 	public String index(Model model) {
 		
 		List<Article> articleList = articleRepository.findAll();
-		model.addAttribute("articleList", articleList);
 		
 		for(int i = 0 ; i < articleList.size() ; i++) {
-			Article article = articleList.get(i);
+		  Article article = articleList.get(i);
 		  List<Comment> commentList = commentRepository.findByArticleId(article.getId());
-		  model.addAttribute("commentList", commentList);
+		  article.setCommentList(commentList);
 		}
+		
+		model.addAttribute("articleList", articleList);
 		
 		return "article-comment";
 	}
