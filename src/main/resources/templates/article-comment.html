@@ -28,8 +28,9 @@
 			投稿内容:<br> 
 			<span th:text="${article.content}" th:field="content">dummy</span><br>
 			
-			<form>
-			  <button>記事削除</button>
+			<form th:action="@{/Article/deleteArticle}" method="post">
+			  <input type="submit" name="delete" value="投稿削除">
+			  <input type="hidden" name="articleId" th:value="${article.id}" >	
 			</form>
 
 			<span th:each="comment : ${article.commentList}"> 
