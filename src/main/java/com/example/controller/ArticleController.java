@@ -2,7 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,14 +38,13 @@ public class ArticleController {
 	 * @return　記事一覧
 	 */
 	@RequestMapping("")
-	public String index(ArticleForm articleForm, Model model) {
+	public String index(Model model) {
 		
 		List<Article> articleList = repository.findAll();
-		BeanUtils.copyProperties(articleForm, articleList);
 		
-		model.addAttribute("article", articleList);
+		model.addAttribute("articleList", articleList);
 		
-		return "article-commnet";
+		return "article-comment";
 	}
 	
 
