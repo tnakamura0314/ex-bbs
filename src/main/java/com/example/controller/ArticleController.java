@@ -2,7 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 
-
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,13 +38,35 @@ public class ArticleController {
 	 * @return　記事一覧
 	 */
 	@RequestMapping("")
-	public String index(Model model) {
+	public String index(ArticleForm articleForm, Model model) {
 		
 		List<Article> articleList = repository.findAll();
-		
+		BeanUtils.copyProperties(articleForm, articleList);
 		model.addAttribute("articleList", articleList);
 		
 		return "article-comment";
+	}
+	
+	/**
+	 * 記事を投稿する.
+	 * 
+	 * @param articleForm　フォームクラス
+	 * @param model　requestスコープ
+	 * @return　記事投稿
+	 */
+	@RequestMapping("/insertArticle")
+	public String insertArticle(ArticleForm articleForm, Model model) {
+		
+		Article article = new Article();
+		BeanUtils.copyProperties(articleForm, article);
+		repository.insert(article);
+		
+		List<Article> articleList = repository.findAll();
+		BeanUtils.copyProperties(articleForm, articleList);
+		model.addAttribute("articleList", articleList);
+		
+		return "article-comment";
+		
 	}
 	
 

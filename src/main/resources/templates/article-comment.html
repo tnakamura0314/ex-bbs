@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<form th:action="@{/Article/}" method="post">
+	<form th:action="@{/Article/insertArticle}" method="post">
 		<label for="name"> 
 		  投稿者名:<input type="text" name="name" id="id">
 		</label><br>
@@ -20,12 +20,12 @@
 
     <hr>
     
-    <form th:action="@{/Article/}" method="post">
+    <form th:action="@{/Article}" method="post" th:object="${articleForm}">
       <div th:each=" article : ${articleList}">
         <br>
-        投稿者名:<span th:text="${article.name}">dummy</span><br>
+        投稿者名:<span th:text="${article.name}" th:field="name">dummy</span><br>
         投稿内容:<br>
-        <span th:text="${article.content}">dummy</span><br>
+        <span th:text="${article.content}" th:field="content">dummy</span><br>
         <button>記事削除</button>
       </div>
     </form>
