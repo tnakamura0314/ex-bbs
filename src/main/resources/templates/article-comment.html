@@ -7,51 +7,56 @@
 <body>
 
 	<form th:action="@{/Article/insertArticle}" method="post">
-		<label for="name"> 
-		  投稿者名:<input type="text" name="name" id="id">
-		</label><br>
+	
+		<label for="name"> 投稿者名:
+		  <input type="text" name="name" id="id">
+		</label><br> 
 		
-		 <label for="content"> 
-		 投稿内容:<textarea name="content" id="content" rows="4" cols="30"></textarea>
+		<label for="content"> 投稿内容:
+		  <textarea name="content"id="content" rows="4" cols="30"></textarea>
 		</label><br>
 
 		<button>記事投稿</button>
 	</form>
 
-    <hr>
-    
-    <form th:action="@{/Article}" method="post" th:object="${articleForm}">
-      <div th:each=" article : ${articleList}">
-        <br>
-        投稿者名:<span th:text="${article.name}" th:field="name">dummy</span><br>
-        投稿内容:<br>
-        <span th:text="${article.content}" th:field="content">dummy</span><br>
-        <button>記事削除</button>
-        
-        <span th:each="comment : ${article.commentList}">
-          コメント者名:<span th:text="${comment.name}" th:field="name">dummy</span><br>
-          コメント内容:<br>
-        <span th:text="${comment.content}" th:field="content">dummy</span><br>
-        </span>
-        
-        <form th:action="@{/Article/insertArticle}" method="post">
-		<label for="name"> 
-		  名前:<br>
-		  <input type="text" name="name" id="id">
-		</label><br>
+	<hr>
+
+	<div>
+		<div th:each=" article : ${articleList}">
+			<br> 投稿者名:
+			<span th:text="${article.name}" th:field="name">dummy</span><br>
+			投稿内容:<br> 
+			<span th:text="${article.content}" th:field="content">dummy</span><br>
+			
+			<form>
+			  <button>記事削除</button>
+			</form>
+
+			<span th:each="comment : ${article.commentList}"> 
+			  コメント者名:
+			  <span th:text="${comment.name}" th:field="name">dummy</span><br>
+			  コメント内容:<br> 
+			  <span th:text="${comment.content}"th:field="content">dummy</span><br>
+			</span>
+			
+			<form th:action="@{/Article/insertComment}" method="post">
+
+		      <label for="name"> 名前:<br> 
+		        <input type="text" name="name" id="id">
+		      </label><br>
 		
-		 <label for="content"> 
-		 投稿内容:<br>
-		 <textarea name="content" id="content" rows="4" cols="30"></textarea>
-		</label><br>
-		<button>コメント投稿</button>
-	</form>
-        
-        <hr>
-      </div>
-      
-     
-      
-    </form>
+    		  <label for="content"> コメント:<br> 
+	    	    <textarea name="content" id="content" rows="4" cols="30"></textarea>
+		      </label><br>
+		      
+		      <input type="hidden" name="articleId" th:value="${article.id}">
+		
+		      <button>コメント投稿</button>
+	        </form>
+	        <hr>
+		  </div>
+	</div>
+	
+	
 </body>
 </html>

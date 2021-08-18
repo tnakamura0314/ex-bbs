@@ -82,13 +82,21 @@ public class ArticleController {
 		
 	}
 	
-//	/**
-//	 * @return
-//	 */
-//	@RequestMapping("/insertComment")
-//	public String insertComment() {
-//		
-//	}
+	/**
+	 * コメントを投稿する.
+	 * 
+	 * @return　コメント投稿
+	 */
+	@RequestMapping("/insertComment")
+	public String insertComment(CommentForm commnetForm, Model model) {
+		
+		Comment comment = new Comment();
+		BeanUtils.copyProperties(commnetForm, comment);
+		commentRepository.insert(comment);
+		
+		return "redirect:/Article";
+		
+	}
 	
 
 }
