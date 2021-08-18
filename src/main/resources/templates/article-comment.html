@@ -29,7 +29,7 @@
 			<span th:text="${article.content}" th:field="content">dummy</span><br>
 			
 			<form th:action="@{/Article/deleteArticle}" method="post">
-			  <input type="submit" name="delete" value="投稿削除">
+			  <button>投稿削除</button>
 			  <input type="hidden" name="articleId" th:value="${article.id}" >	
 			</form>
 
