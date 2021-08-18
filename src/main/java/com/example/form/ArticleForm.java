@@ -1,9 +1,5 @@
 package com.example.form;
 
-import java.util.List;
-
-import com.example.domain.Comment;
-
 /**
  * 記事の登録時に使用するフォームクラス.
  * 
@@ -17,9 +13,6 @@ public class ArticleForm {
 
 	/** 投稿内容 */
 	private String content;
-
-	/** コメントリスト */
-	private List<Comment> commentList;
 
 	public String getName() {
 		return name;
@@ -37,17 +30,9 @@ public class ArticleForm {
 		this.content = content;
 	}
 
-	public List<Comment> getCommentList() {
-		return commentList;
-	}
-
-	public void setCommentList(List<Comment> commentList) {
-		this.commentList = commentList;
-	}
-
 	@Override
 	public String toString() {
-		return "ArticleForm [name=" + name + ", content=" + content + ", commentList=" + commentList + "]";
+		return "ArticleForm [name=" + name + ", content=" + content + "]";
 	}
 
 }

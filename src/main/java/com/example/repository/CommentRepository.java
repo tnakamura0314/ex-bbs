@@ -34,7 +34,7 @@ public class CommentRepository {
 		Comment comment = new Comment();
 		comment.setId(rs.getInt("id"));
 		comment.setName(rs.getString("name"));
-		comment.setContent(rs.getNString("content"));
+		comment.setContent(rs.getString("content"));
 		comment.setArticleId(rs.getInt("article_id"));
 		
 		return comment;
