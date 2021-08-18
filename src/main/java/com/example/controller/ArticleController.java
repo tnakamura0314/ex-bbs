@@ -61,11 +61,7 @@ public class ArticleController {
 		BeanUtils.copyProperties(articleForm, article);
 		repository.insert(article);
 		
-		List<Article> articleList = repository.findAll();
-		BeanUtils.copyProperties(articleForm, articleList);
-		model.addAttribute("articleList", articleList);
-		
-		return "article-comment";
+		return "redirect:/Article";
 		
 	}
 	
