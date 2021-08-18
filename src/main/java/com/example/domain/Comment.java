@@ -8,7 +8,7 @@ package com.example.domain;
  */
 public class Comment {
 
-	/** ID */
+	/** コメントID */
 	private Integer id;
 
 	/** コメント者名 */
@@ -17,7 +17,7 @@ public class Comment {
 	/** コメント内容 */
 	private String content;
 
-	/** 記事ID */
+	/** 投稿ID */
 	private Integer articleId;
 
 	public Comment() {

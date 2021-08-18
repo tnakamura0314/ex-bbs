@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Article {
 	
-	/**	ID */
+	/**	投稿ID */
 	private Integer id;
 	
 	/**	投稿者名 */
