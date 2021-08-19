@@ -58,6 +58,11 @@ public class ArticleController {
 			List<Comment> commentList = commentRepository.findByArticleId(article.getId());
 			article.setCommentList(commentList);
 		}
+		
+//		for(List<Article> article : articleList) {
+//			List<Comment> commentList = commentRepository.findByArticleId(article.getId());
+//			article.setCommentList(commentList);
+//		}
 
 		model.addAttribute("articleList", articleList);
 
@@ -109,9 +114,13 @@ public class ArticleController {
 
 		commentRepository.deleteByArticleId(articleId);
 		
-		Article article = new Article();
-		article.setId(articleId);
-		articleRepository.deleteById(article.getId());
+		articleRepository.deleteById(articleId);
+		
+		//今回articleIDnには外部キー制約（親テーブルのIDにあるものしか入れられない）があるので、
+		//上記の110行目と112行目でOK　下記は必要ないことをやっている
+//		Article article = new Article();
+//		article.setId(articleId);
+//		articleRepository.deleteById(article.getId());
 
 		return "redirect:/Article";
 

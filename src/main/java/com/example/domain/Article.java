@@ -21,7 +21,7 @@ public class Article {
 	
 	/**	コメントリスト */
 	private List<Comment> commentList;
-
+	
 	public Article() {}
 
 	public Article(Integer id, String name, String content, List<Comment> commentList) {

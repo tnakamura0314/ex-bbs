@@ -18,46 +18,47 @@
 
 		<button>記事投稿</button>
 	</form>
-
 	<hr>
-
 	<div>
-		<div th:each=" article : ${articleList}">
-			<br> 投稿者名:
-			<span th:text="${article.name}" th:field="name">dummy</span><br>
-			投稿内容:<br> 
-			<span th:text="${article.content}" th:field="content">dummy</span><br>
+	  <div th:each=" article : ${articleList}">
+		<br> 投稿者名:
+		<strong th:text="${article.name}" th:field="name">dummy</strong><br>
+		投稿内容:<br> 
+		<br>
+		<strong th:text="${article.content}" th:field="content">dummy</strong><br>
 			
-			<form th:action="@{/Article/deleteArticle}" method="post">
-			  <button>投稿削除</button>
-			  <input type="hidden" name="articleId" th:value="${article.id}" >	
-			</form>
-
-			<span th:each="comment : ${article.commentList}"> 
-			  コメント者名:
-			  <span th:text="${comment.name}" th:field="name">dummy</span><br>
-			  コメント内容:<br> 
-			  <span th:text="${comment.content}"th:field="content">dummy</span><br>
-			</span>
-			
-			<form th:action="@{/Article/insertComment}" method="post">
-
-		      <label for="name"> 名前:<br> 
-		        <input type="text" name="name" id="id">
-		      </label><br>
+		<form th:action="@{/Article/deleteArticle}" method="post">
+		  <br>
+		  <button>投稿削除</button>
+		  <input type="hidden" name="articleId" th:value="${article.id}" >	
+		</form>
 		
-    		  <label for="content"> コメント:<br> 
-	    	    <textarea name="content" id="content" rows="4" cols="30"></textarea>
-		      </label><br>
+		<span th:each="comment : ${article.commentList}">
+		  <br> 
+		  コメント者名:
+		  <strong th:text="${comment.name}" th:field="name">dummy</strong><br>
+		  コメント内容:<br> 
+		  <br>
+		  <strong th:text="${comment.content}"th:field="content">dummy</strong><br>
+	    </span>
+			
+		<form th:action="@{/Article/insertComment}" method="post">
+          <br> 
+		  <label for="name"> 名前:<br> 
+		    <input type="text" name="name" id="id">
+		  </label><br>
+		
+    	  <label for="content"> コメント:<br> 
+	        <textarea name="content" id="content" rows="4" cols="30"></textarea>
+		  </label><br>
 		      
-		      <input type="hidden" name="articleId" th:value="${article.id}">
+		  <input type="hidden" name="articleId" th:value="${article.id}">
 		
-		      <button>コメント投稿</button>
-	        </form>
-	        <hr>
-		  </div>
+		  <button>コメント投稿</button>
+	    </form>
+	    <hr>
+	  </div>
 	</div>
-	
 	
 </body>
 </html>
